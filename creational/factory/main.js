@@ -1,20 +1,6 @@
-var task = function (name){
-  this.name = name;
-  this.description = "this is the description of task :" + this.name ;
-}
+var task = require("./task.js");
+var repoFactory = require("./repoFactory.js");
 
-task.prototype.complete = function (){
-  console.log("task is complted - " + this.name);
-}
-
-task.prototype.save = function (){
-  console.log("task is saved - " + this.name);
-}
-
-var task1 = new task("task 1");
-var task2 = new task("task 2");
-var task3 = new task("task 3");
-
-task1.complete();
-task2.save();
-task3.save();
+var user = new task(repoFactory.getRepo("user").description("user"));
+var company = new task(repoFactory.getRepo("company").description("company"));
+var others = new task(repoFactory.getRepo("others").description("others"));
